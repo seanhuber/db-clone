@@ -1,8 +1,10 @@
+require 'yaml'
+
 module DbSync
   class DbSelections
     # read database blocks from config/database.yml
-    def initialize
-      h = YAML.load_file Rails.root.join('config', 'database.yml')
+    def initialize( database_yml )
+      h = YAML.load_file database_yml
       @dbs = h.sort_by{|k,v| k}.map{|k,v| v.merge(label: k)}
       @prod_idx = @dbs.find_index{|db| db[:label] == 'production'}
       @dev_idx = @dbs.find_index{|db| db[:label] == 'development'}
