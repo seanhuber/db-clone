@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 module DbSync
-  describe DbSync do
+  describe DbSelections do
     describe 'db selections' do
       ds = DbSelections.new Rails.root.join('config', 'database.yml')
 
