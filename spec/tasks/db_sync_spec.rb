@@ -10,8 +10,22 @@ module DbSync
         expect { ds.source_prompt }.to output(str).to_stdout
       end
 
+      it 'should set a source' do
+        allow(STDIN).to receive(:gets) { '2' }
+        str = "\n  \e[0;35;49mSource\e[0m set to: \e[0;33;49mdevelopment\e[0m\n"
+        expect { ds.source_get }.to output(str).to_stdout
+      end
+
       # [:source_prompt, :source_get, :dest_prompt, :dest_get].each{|m| ds.send(m)}
-      
+      # it 'should set a source' do
+      #   allow(STDIN).to receive(:gets) { '2' }
+      #   ds.source_prompt
+      #   ds.source_get
+      #
+      #   allow(STDIN).to receive(:gets) { '3' }
+      #   ds.dest_prompt
+      #   ds.dest_get
+      # end
     end
   end
 end
