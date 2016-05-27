@@ -1,13 +1,12 @@
 require 'colorize'
+require 'db_sync/db_selections'
 require 'db_sync/engine'
-require 'db_sync/sync'
 
 module DbSync
   def self.sync!
-    sync = Sync.new
-    sync.source_prompt
-    sync.source_get
-    sync.dest_prompt
-    sync.dest_get
+    ds = DbSelections.new
+    [:source_prompt, :source_get, :dest_prompt, :dest_get].each{|m| ds.send(m)}
+
+    # String.colors.each{|str| puts str.to_s.send(str)}
   end
 end

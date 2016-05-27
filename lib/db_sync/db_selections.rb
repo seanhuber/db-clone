@@ -1,5 +1,5 @@
 module DbSync
-  class Sync
+  class DbSelections
     # read database blocks from config/database.yml
     def initialize
       h = YAML.load_file Rails.root.join('config', 'database.yml')
@@ -12,7 +12,6 @@ module DbSync
     # STEP 1: prompt user for which database block to use as the source
     def source_prompt
       db_prompt 'source'
-      # String.colors.each{|str| puts str.to_s.send(str)}
     end
 
     # STEP 2: retrieve from use which database block to use as the source
