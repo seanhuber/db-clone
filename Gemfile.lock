@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     db_sync (0.0.1)
+      colorize
       rails (~> 4.2.6)
 
 GEM
@@ -45,6 +46,7 @@ GEM
     arel (6.0.3)
     awesome_print (1.6.1)
     builder (3.2.2)
+    colorize (0.7.7)
     concurrent-ruby (1.0.2)
     erubis (2.7.0)
     globalid (0.3.6)
