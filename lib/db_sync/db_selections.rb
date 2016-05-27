@@ -31,6 +31,10 @@ module DbSync
       db_select 'destination'
     end
 
+    def selections
+      @selections.map{|k,v| [k,@dbs[v]] }.to_h
+    end
+
     private
 
     def db_prompt( src_dest )
