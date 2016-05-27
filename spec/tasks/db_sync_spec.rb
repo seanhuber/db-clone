@@ -16,16 +16,16 @@ module DbSync
         expect { ds.source_get }.to output(str).to_stdout
       end
 
-      # [:source_prompt, :source_get, :dest_prompt, :dest_get].each{|m| ds.send(m)}
-      # it 'should set a source' do
-      #   allow(STDIN).to receive(:gets) { '2' }
-      #   ds.source_prompt
-      #   ds.source_get
-      #
-      #   allow(STDIN).to receive(:gets) { '3' }
-      #   ds.dest_prompt
-      #   ds.dest_get
-      # end
+      it 'should prompt for a destination' do
+        str = "\n  Choose a \e[0;35;49mdestination\e[0m database from one of the blocks defined in \e[0;92;49mconfig/database.yml\e[0m:\n\n    [ \e[0;94;49m1\e[0m ] \e[0;33;49mdefault\e[0m\n    [ \e[0;31;49mX\e[0m ] \e[0;31;49mdevelopment\e[0m\n    [ \e[0;94;49m3\e[0m ] \e[0;33;49mproduction\e[0m\n    [ \e[0;94;49m4\e[0m ] \e[0;33;49mtest\e[0m\n\n  Choose a \e[0;35;49mdestination\e[0m database (\e[0;94;49m1\e[0m-\e[0;94;49m4\e[0m) [development = \e[0;94;49m2\e[0m]: "
+        expect { ds.dest_prompt }.to output(str).to_stdout
+      end
+
+      it 'should set a destination' do
+        allow(STDIN).to receive(:gets) { '4' }
+        str = "\n  \e[0;35;49mDestination\e[0m set to: \e[0;33;49mtest\e[0m\n"
+        expect { ds.dest_get }.to output(str).to_stdout
+      end
     end
   end
 end
