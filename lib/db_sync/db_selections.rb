@@ -1,8 +1,10 @@
+require 'yaml'
+
 module DbSync
   class DbSelections
     # read database blocks from config/database.yml
-    def initialize
-      h = YAML.load_file Rails.root.join('config', 'database.yml')
+    def initialize( database_yml )
+      h = YAML.load_file database_yml
       @dbs = h.sort_by{|k,v| k}.map{|k,v| v.merge(label: k)}
       @prod_idx = @dbs.find_index{|db| db[:label] == 'production'}
       @dev_idx = @dbs.find_index{|db| db[:label] == 'development'}
@@ -29,6 +31,10 @@ module DbSync
       db_select 'destination'
     end
 
+    def selections
+      @selections.map{|k,v| [k,@dbs[v]] }.to_h
+    end
+
     private
 
     def db_prompt( src_dest )
@@ -52,6 +58,7 @@ module DbSync
       raise(ArgumentError, "Invalid selection: #{src_idx}") unless (1..@dbs.length).map(&:to_s).include?(idx)
       @selections[sk] = idx.to_i - 1
       raise(ArgumentError, 'Destination cannot be the same as the source') unless @selections.values.uniq.length == 2
+      raise(ArgumentError, 'Source and destination databases must be of the same type') if src_dest=='destination' && @dbs[@selections[:src]]['adapter'] != @dbs[@selections[:dest]]['adapter']
       puts "\n  #{src_dest.capitalize.magenta} set to: #{@dbs[@selections[sk]][:label].yellow}"
     end
   end
