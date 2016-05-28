@@ -23,8 +23,6 @@ module DbSync
       ].join(' ')
     end
 
-    def get_cmd
-      @cmd
-    end
+    def get_cmd() @cmd end
   end
 end
