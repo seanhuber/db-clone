@@ -5,9 +5,9 @@ require 'db_sync/engine'
 
 module DbSync
   def self.sync!
-    # ds = DbSelections.new Rails.root.join('config', 'database.yml')
-    # [:source_prompt, :source_get, :dest_prompt, :dest_get].each{|m| ds.send(m)}
-    # h = ds.selections
+    ds = DbSelections.new Rails.root.join('config', 'database.yml')
+    [:source_prompt, :source_get, :dest_prompt, :dest_get].each{|m| ds.send(m)}
+    h = ds.selections
 
     h = {
       src: {
@@ -32,7 +32,9 @@ module DbSync
       }
     }
     cb = CmdBuilder.new h
-    ap cb.build
+    puts "\n  Executing: #{cb.get_cmd.light_blue}\n\n"
+    # cb.exec!
+
     # String.colors.each{|str| puts str.to_s.send(str)}
   end
 end
