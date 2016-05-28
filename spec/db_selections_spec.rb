@@ -53,5 +53,18 @@ module DbSync
         expect(ds.selections).to eql(expected_selections)
       end
     end
+
+    describe 'db mismatched selections' do
+      ds = DbSelections.new Rails.root.join('config', 'database.yml')
+
+      it 'should prohibit syncing between different adapters' do
+        expect { ds.source_prompt }.to output.to_stdout
+        allow(STDIN).to receive(:gets) { '7' }
+        expect { ds.source_get }.to output.to_stdout
+        expect { ds.dest_prompt }.to output.to_stdout
+        allow(STDIN).to receive(:gets) { '8' }
+        expect { ds.dest_get }.to raise_error(ArgumentError)
+      end
+    end
   end
 end

@@ -58,6 +58,7 @@ module DbSync
       raise(ArgumentError, "Invalid selection: #{src_idx}") unless (1..@dbs.length).map(&:to_s).include?(idx)
       @selections[sk] = idx.to_i - 1
       raise(ArgumentError, 'Destination cannot be the same as the source') unless @selections.values.uniq.length == 2
+      raise(ArgumentError, 'Source and destination databases must be of the same type') if src_dest=='destination' && @dbs[@selections[:src]]['adapter'] != @dbs[@selections[:dest]]['adapter']
       puts "\n  #{src_dest.capitalize.magenta} set to: #{@dbs[@selections[sk]][:label].yellow}"
     end
   end
