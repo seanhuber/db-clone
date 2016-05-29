@@ -3,6 +3,10 @@ require 'rails_helper'
 module DbSync
   describe DbSelections do
     describe 'db selections' do
+      DbSync.config = {
+        default_source: 'production',
+        default_destination: 'development',
+      }
       ds = DbSelections.new Rails.root.join('config', 'database.yml')
 
       it 'should prompt for a source' do
