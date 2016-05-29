@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     db_sync (1.0.0)
-      colorize
-      rails (~> 4.2.6)
+      colorize (~> 0.7)
+      rails (~> 4.2)
 
 GEM
   remote: https://rubygems.org/
@@ -127,10 +127,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  awesome_print
+  awesome_print (~> 1.6)
   db_sync!
-  rspec-rails
-  sqlite3
+  rspec-rails (~> 3.4)
+  sqlite3 (~> 1.3)
 
 BUNDLED WITH
    1.12.5
