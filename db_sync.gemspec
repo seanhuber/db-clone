@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = DbSync::VERSION
   s.authors     = ['Sean Huber']
   s.email       = ['seanhuber@seanhuber.com']
-  s.homepage    = 'http://seanhuber.com'
-  s.summary     = 'Summary of DbSync.'
-  s.description = 'Description of DbSync.'
+  s.homepage    = 'https://github.com/seanhuber/db-sync'
+  s.summary     = 'rake db:sync will clone your production database to development'
+  s.description = 'rake db:sync[manual] provides a CLI for selecting a specific source database to copy to a specific destination database. Supports postgreql and mysql.'
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
@@ -24,6 +24,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'awesome_print'
 
   s.add_development_dependency 'rspec-rails'
-  # s.add_development_dependency 'capybara'
-  s.add_development_dependency 'factory_girl_rails'
+  # s.add_development_dependency 'factory_girl_rails'
 end
