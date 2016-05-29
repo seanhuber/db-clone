@@ -1,6 +1,6 @@
 namespace :db do
   desc 'syncs a source database to a destination database'
-  task :sync do
+  task sync: :environment do
     DbSync.sync!
   end
 end
