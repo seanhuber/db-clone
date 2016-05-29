@@ -5,7 +5,7 @@ require 'db_sync/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = 'db_sync'
+  s.name        = 'db-clone'
   s.version     = DbSync::VERSION
   s.authors     = ['Sean Huber']
   s.email       = ['seanhuber@seanhuber.com']
