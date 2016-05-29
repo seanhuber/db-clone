@@ -3,12 +3,10 @@ module DbSync
     VALID_DB_KEYS = ['host', 'port', 'username', 'database', 'password']
     SUPPORTED_DBS = [:mysql, :postgresql]
 
-    def exec!
-      # TODO: make sure this is safe...
-      exec @cmd
-    end
+    def exec!() exec @cmd end
 
     def initialize( selections )
+      raise(ArgumentError, 'Both source and destination must be set') unless selections[:src] && selections[:dest]
       raise(ArgumentError, 'Source and destination databases must be of the same type') unless selections[:src]['adapter'] == selections[:dest]['adapter']
       SUPPORTED_DBS.each{|db| @db_type = db if selections[:src]['adapter'].include?(db.to_s)}
       raise(ArgumentError, "Unsupported database: #{selections[:src]['adapter']}") unless @db_type
