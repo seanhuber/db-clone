@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    db_sync (1.0.0)
+    db-clone (1.0.0)
       colorize (~> 0.7)
       rails (~> 4.2)
 
@@ -128,7 +128,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print (~> 1.6)
-  db_sync!
+  db-clone!
   rspec-rails (~> 3.4)
   sqlite3 (~> 1.3)
 

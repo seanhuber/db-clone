@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-module DbSync
+module DbClone
   describe CmdBuilder do
     describe 'postgresql command builder' do
       h = {
@@ -62,7 +62,7 @@ module DbSync
       end
 
       it 'should be able to generate a mysqldump command with ignore tables' do
-        DbSync.config = {
+        DbClone.config = {
           ignore_tables: ['tableAAAA', 'tableBBBB', 'tableCCCC']
         }
         cb = CmdBuilder.new @h

@@ -1,6 +1,6 @@
-module DbSync
+module DbClone
   class Engine < ::Rails::Engine
-    isolate_namespace DbSync
+    isolate_namespace DbClone
 
     config.generators do |g|
       g.test_framework :rspec, :fixture => false

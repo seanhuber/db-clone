@@ -1,2 +1,2 @@
-DbSync::Engine.routes.draw do
+DbClone::Engine.routes.draw do
 end

@@ -1,16 +1,16 @@
 require 'colorize'
-require 'db_sync/cmd_builder'
-require 'db_sync/db_selections'
-require 'db_sync/engine'
+require 'db-clone/cmd_builder'
+require 'db-clone/db_selections'
+require 'db-clone/engine'
 
-module DbSync
+module DbClone
   mattr_accessor :config
 
-  def self.sync!( **opts )
-    DbSync.config ||= {}
-    DbSync.config[:ignore_tables] ||= []
-    DbSync.config[:default_source] ||= 'production'
-    DbSync.config[:default_destination] ||= 'development'
+  def self.clone!( **opts )
+    DbClone.config ||= {}
+    DbClone.config[:ignore_tables] ||= []
+    DbClone.config[:default_source] ||= 'production'
+    DbClone.config[:default_destination] ||= 'development'
 
     ds = DbSelections.new Rails.root.join('config', 'database.yml')
     src_dest = if opts[:manual]

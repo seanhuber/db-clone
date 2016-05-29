@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
 
-  mount DbSync::Engine => "/db_sync"
+  mount DbClone::Engine => "/db-clone"
 end
