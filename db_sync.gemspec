@@ -9,21 +9,20 @@ Gem::Specification.new do |s|
   s.version     = DbSync::VERSION
   s.authors     = ['Sean Huber']
   s.email       = ['seanhuber@seanhuber.com']
-  s.homepage    = 'http://seanhuber.com'
-  s.summary     = 'Summary of DbSync.'
-  s.description = 'Description of DbSync.'
+  s.homepage    = 'https://github.com/seanhuber/db-sync'
+  s.summary     = 'rake db:sync will clone your production database to development'
+  s.description = 'rake db:sync[manual] provides a CLI for selecting a specific source database to copy to a specific destination database. Supports postgreql and mysql.'
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
   s.test_files = Dir['spec/**/*']
 
-  s.add_dependency 'rails', '~> 4.2.6'
-  s.add_dependency 'colorize'
+  s.add_dependency 'rails', '~> 4.2'
+  s.add_dependency 'colorize', '~> 0.7'
 
-  s.add_development_dependency 'sqlite3'
-  s.add_development_dependency 'awesome_print'
+  s.add_development_dependency 'sqlite3', '~> 1.3'
+  s.add_development_dependency 'awesome_print', '~> 1.6'
 
-  s.add_development_dependency 'rspec-rails'
-  # s.add_development_dependency 'capybara'
-  s.add_development_dependency 'factory_girl_rails'
+  s.add_development_dependency 'rspec-rails', '~> 3.4'
+  # s.add_development_dependency 'factory_girl_rails'
 end
