@@ -27,7 +27,7 @@ module DbClone
         "--port=#{src_dest[:src]['port']}"
       ]
 
-      DbClone.config[:ignore_tables].each{|tbl| mysqldump_args << "--ignore-table=#{src_dest[:dest]['database']}.#{tbl}"} if DbClone.config && DbClone.config[:ignore_tables].is_a?(Array)
+      DbClone.config[:ignore_tables].each{|tbl| mysqldump_args << "--ignore-table=#{src_dest[:src]['database']}.#{tbl}"} if DbClone.config && DbClone.config[:ignore_tables].is_a?(Array)
 
       (mysqldump_args + [
         "#{src_dest[:src]['database']}",
