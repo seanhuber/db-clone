@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-module DbSync
+module DbClone
   describe DbSelections do
     describe 'db selections' do
-      DbSync.config = {
+      DbClone.config = {
         default_source: 'production',
         default_destination: 'development',
       }
@@ -61,7 +61,7 @@ module DbSync
     describe 'db mismatched selections' do
       ds = DbSelections.new Rails.root.join('config', 'database.yml')
 
-      it 'should prohibit syncing between different adapters' do
+      it 'should prohibit cloneing between different adapters' do
         expect { ds.source_prompt }.to output.to_stdout
         allow(STDIN).to receive(:gets) { '7' }
         expect { ds.source_get }.to output.to_stdout

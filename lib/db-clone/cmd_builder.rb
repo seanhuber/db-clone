@@ -1,4 +1,4 @@
-module DbSync
+module DbClone
   class CmdBuilder
     VALID_DB_KEYS = ['host', 'port', 'username', 'database', 'password']
     SUPPORTED_DBS = [:mysql, :postgresql]
@@ -27,7 +27,7 @@ module DbSync
         "--port=#{src_dest[:src]['port']}"
       ]
 
-      DbSync.config[:ignore_tables].each{|tbl| mysqldump_args << "--ignore-table=#{src_dest[:dest]['database']}.#{tbl}"} if DbSync.config && DbSync.config[:ignore_tables].is_a?(Array)
+      DbClone.config[:ignore_tables].each{|tbl| mysqldump_args << "--ignore-table=#{src_dest[:src]['database']}.#{tbl}"} if DbClone.config && DbClone.config[:ignore_tables].is_a?(Array)
 
       (mysqldump_args + [
         "#{src_dest[:src]['database']}",

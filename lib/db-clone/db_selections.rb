@@ -1,13 +1,13 @@
 require 'yaml'
 
-module DbSync
+module DbClone
   class DbSelections
     # read database blocks from config/database.yml
     def initialize( database_yml )
       h = YAML.load_file database_yml
       @dbs = h.sort_by{|k,v| k}.map{|k,v| v.merge(label: k)}
-      @default_src_idx = @dbs.find_index{|db| db[:label] == DbSync.config[:default_source]}
-      @default_dest_idx = @dbs.find_index{|db| db[:label] == DbSync.config[:default_destination]}
+      @default_src_idx = @dbs.find_index{|db| db[:label] == DbClone.config[:default_source]}
+      @default_dest_idx = @dbs.find_index{|db| db[:label] == DbClone.config[:default_destination]}
       @selections = {src: nil, dest: nil}
     end
 

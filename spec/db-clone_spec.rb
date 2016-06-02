@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-module DbSync
-  describe DbSync do
-    it 'should be able to auto sync' do
-      DbSync.config = {
+module DbClone
+  describe DbClone do
+    it 'should be able to auto clone' do
+      DbClone.config = {
         default_source: 'second_test_mysql',
         default_destination: 'test_mysql',
       }
