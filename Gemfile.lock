@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    db-clone (1.0.0)
+    db-clone (1.0.5)
       colorize (~> 0.7)
-      rails (~> 4.2)
+      rails (~> 4.0)
 
 GEM
   remote: https://rubygems.org/

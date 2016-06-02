@@ -66,7 +66,7 @@ module DbClone
           ignore_tables: ['tableAAAA', 'tableBBBB', 'tableCCCC']
         }
         cb = CmdBuilder.new @h
-        expect(cb.get_cmd).to eql("mysqldump --no-create-db --add-drop-table --lock-tables=false --user=fake_mysql_usr --password=fake_mysql_password --host=fake_mysql_host --port=3306 --ignore-table=other_mysql_db.tableAAAA --ignore-table=other_mysql_db.tableBBBB --ignore-table=other_mysql_db.tableCCCC fake_mysql_db | mysql --user=other_mysql_usr --password=other_mysql_password --host=other_mysql_host --port=3306 other_mysql_db")
+        expect(cb.get_cmd).to eql("mysqldump --no-create-db --add-drop-table --lock-tables=false --user=fake_mysql_usr --password=fake_mysql_password --host=fake_mysql_host --port=3306 --ignore-table=fake_mysql_db.tableAAAA --ignore-table=fake_mysql_db.tableBBBB --ignore-table=fake_mysql_db.tableCCCC fake_mysql_db | mysql --user=other_mysql_usr --password=other_mysql_password --host=other_mysql_host --port=3306 other_mysql_db")
       end
     end
   end
