@@ -1,7 +1,7 @@
 DbClone
 ==============
 
-![Screenshot](https://raw.githubusercontent.com/seanhuber/db-clone/master/screenshot.png)
+![Screenshot](https://cdn.rawgit.com/seanhuber/db-clone/master/screenshot.png)
 
 Requirements
 -----------------
