@@ -9,7 +9,7 @@ require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)
-require "db-clone"
+require "db_clone"
 
 module Dummy
   class Application < Rails::Application
@@ -29,4 +29,3 @@ module Dummy
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
-

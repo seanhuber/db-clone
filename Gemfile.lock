@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    db-clone (1.0.5)
+    db-clone (1.1.0)
       colorize (~> 0.7)
       rails (~> 4.0)
 

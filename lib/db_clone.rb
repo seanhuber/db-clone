@@ -1,7 +1,7 @@
 require 'colorize'
-require 'db-clone/cmd_builder'
-require 'db-clone/db_selections'
-require 'db-clone/engine'
+require 'db_clone/cmd_builder'
+require 'db_clone/db_selections'
+require 'db_clone/engine'
 
 module DbClone
   mattr_accessor :config

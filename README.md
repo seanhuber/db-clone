@@ -14,7 +14,7 @@ DbClone requires `mysqldump` (for MySQL) and/or `pg_dump` (for PostgreSQL).
 Installation
 -----------------
 
-Add to `gem 'db-clone'` to your `Gemfile` and `bundle install`.
+Add to `gem 'db-clone', require: 'db_clone'` to your `Gemfile` and `bundle install`.
 
 
 
