@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2.1'
 
-  s.add_dependency 'rails', '~> 4.0'
+  s.add_dependency 'rails', '>= 4.0'
   s.add_dependency 'colorize', '~> 0.7'
 
   s.add_development_dependency 'sqlite3', '~> 1.3'
