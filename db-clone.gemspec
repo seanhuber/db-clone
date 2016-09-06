@@ -1,7 +1,7 @@
 $:.push File.expand_path('../lib', __FILE__)
 
 # Maintain your gem's version:
-require 'db-clone/version'
+require 'db_clone/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2.1'
 
-  s.add_dependency 'rails', '~> 4.0'
+  s.add_dependency 'rails', '>= 4.0', '< 6.0'
   s.add_dependency 'colorize', '~> 0.7'
 
   s.add_development_dependency 'sqlite3', '~> 1.3'
