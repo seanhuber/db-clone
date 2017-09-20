@@ -26,4 +26,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'awesome_print', '~> 1.6'
 
   s.add_development_dependency 'rspec-rails', '~> 3.4'
+  s.add_development_dependency 'coveralls', '~> 0.8'
 end

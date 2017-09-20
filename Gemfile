@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+#ruby=ruby-2.1.10
+#ruby-gemset=db-clone
+
 # Declare your gem's dependencies in db-clone.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
@@ -12,4 +15,3 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
-
