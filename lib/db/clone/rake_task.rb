@@ -5,11 +5,12 @@ module Db
 
       def install_tasks
         return unless defined? namespace
-        
+
         namespace :db do
           desc 'clones a source database to a destination database'
           task :clone, [:manual] do |t, args|
-            puts 'hello world'
+            invoke_cli = !args[:manual].nil?
+            Db::Clone::Base.clone! invoke_cli
           end
         end
       end
