@@ -1,7 +1,4 @@
-require "db/clone/version"
+require 'db/clone/version'
+require 'db/clone/rake_task.rb'
 
-module Db
-  module Clone
-    # Your code goes here...
-  end
-end
+Db::Clone::RakeTask.new.install_tasks

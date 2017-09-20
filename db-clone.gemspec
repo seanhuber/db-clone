@@ -9,9 +9,10 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Sean Huber"]
   spec.email         = ["seanhuber@seanhuber.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage    = 'https://github.com/seanhuber/db-clone'
+  spec.summary     = 'rake db:clone will clone your production database to development'
+  spec.description = 'rake db:clone[manual] provides a CLI for selecting a specific source database to copy to a specific destination database. Supports postgreql and mysql.'
+
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
