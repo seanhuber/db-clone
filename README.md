@@ -1,38 +1,38 @@
-# Db::Clone
+[![Gem Version](https://badge.fury.io/rb/db-clone.svg)](https://badge.fury.io/rb/db-clone)
+[![Build Status](https://travis-ci.org/seanhuber/db-clone.svg?branch=master)](https://travis-ci.org/seanhuber/db-clone)
+[![Coverage Status](https://coveralls.io/repos/github/seanhuber/db-clone/badge.svg?branch=master)](https://coveralls.io/github/seanhuber/db-clone?branch=master)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/db/clone`. To experiment with that code, run `bin/console` for an interactive prompt.
+# DbClone
 
-TODO: Delete this and the text above, and describe your gem
+![Screenshot](https://cdn.rawgit.com/seanhuber/db-clone/master/screenshot.png)
+
+## Requirements
+
+Ruby >= 2.3
+
+db-clone requires `mysqldump` (for MySQL) and/or `pg_dump` (for PostgreSQL).
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'db-clone'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install db-clone
+Add to `gem 'db-clone', '~> 2.0'` to your `Gemfile` and `bundle install`.
 
 ## Usage
 
-TODO: Write usage instructions here
+To clone your `production` database to `development`, run:
 
-## Development
+```
+rake db:clone
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+If you have more database blocks (besides `production` and `development`) defined in `config/database.yml`, you can clone between these databases using DbClone's CLI:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```
+rake db:clone[manual]
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/db-clone.
+Bug reports and pull requests are welcome on GitHub at https://github.com/seanhuber/db-clone.
 
 ## License
 

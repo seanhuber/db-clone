@@ -7,7 +7,7 @@ module Db::Clone
 
       namespace :db do
         desc 'clones a source database to a destination database'
-        task :clone, [:manual] do |t, args|
+        task :clone, [:manual] => :environment do |t, args|
           invoke_cli = !args[:manual].nil?
           Db::Clone::Base.clone! invoke_cli
         end
