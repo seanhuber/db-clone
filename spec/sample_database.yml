@@ -1,0 +1,39 @@
+development:
+  adapter: mysql2
+  database: dev_db
+  username: dev_user
+  password: dev_pw
+  host: localhost
+  port: 3306
+
+test:
+  adapter: mysql2
+  database: test_db
+  username: test_user
+  password: test_pw
+  host: localhost
+  port: 3306
+
+staging:
+  adapter: mysql2
+  database: staging_db
+  username: staging_user
+  password: staging_pw
+  host: localhost
+  port: 3306
+
+uat:
+  adapter: mysql2
+  database: uat_db
+  username: uat_user
+  password: uat_pw
+  host: localhost
+  port: 3306
+
+production:
+  adapter: mysql2
+  database: production_db
+  username: production_user
+  password: production_pw
+  host: localhost
+  port: 3306
