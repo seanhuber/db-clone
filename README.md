@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/seanhuber/db-clone.svg?branch=master)](https://travis-ci.org/seanhuber/db-clone)
 [![Coverage Status](https://coveralls.io/repos/github/seanhuber/db-clone/badge.svg?branch=master)](https://coveralls.io/github/seanhuber/db-clone?branch=master)
 
-# DbClone
+# db-clone
 
 ![Screenshot](https://cdn.rawgit.com/seanhuber/db-clone/master/screenshot.png)
 
