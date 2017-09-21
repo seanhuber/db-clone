@@ -18,7 +18,10 @@ module Db::Clone
       src_db, dest_db = invoke_cli ? prompt_for_src_and_dest : default_src_and_dest
 
       puts "\n\nsource: #{src_db.green}"
-      puts "dest: #{dest_db.green}"
+      puts "dest: #{dest_db.green}\n\n"
+
+      cmd_builder = CmdBuilder.new src: @db_yml[src_db], dest: @db_yml[dest_db]
+      puts cmd_builder.cmd.blue
     end
 
     private

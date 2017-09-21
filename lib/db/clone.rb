@@ -1,6 +1,7 @@
 require 'colorize'
 require 'yaml'
 
+require 'db/clone/cmd_builder.rb'
 require 'db/clone/cmd_prompt.rb'
 require 'db/clone/base.rb'
 require 'db/clone/rake_task.rb'
@@ -32,6 +33,14 @@ module Db
     end
     def self.default_destination_database=(default_destination_database)
       @@default_destination_database = default_destination_database
+    end
+
+    @@ignore_tables = []
+    def self.ignore_tables
+      @@ignore_tables
+    end
+    def self.ignore_tables=(ignore_tables)
+      @@ignore_tables = ignore_tables
     end
 
     def self.setup

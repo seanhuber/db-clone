@@ -12,4 +12,5 @@ Db::Clone.setup do |config|
   # config.default_destination_database = 'development'
   # config.default_source_database      = 'uat2'
   # config.default_destination_database = 'test'
+  config.ignore_tables                = ['first_ignore', 'second_ignore']
 end
