@@ -5,10 +5,6 @@ module Db::Clone
 
     attr_reader :cmd
 
-    def exec!
-      exec @cmd
-    end
-
     def initialize selections
       raise ArgumentError.new('Both source and destination must be set') unless selections[:src] && selections[:dest]
       raise ArgumentError.new('Source and destination databases must be of the same type') unless selections[:src]['adapter'] == selections[:dest]['adapter']

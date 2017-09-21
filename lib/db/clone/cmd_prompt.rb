@@ -1,15 +1,15 @@
 module Db::Clone
   module CmdPrompt
-    def ask_for_text instruction, default_text=nil
-      if default_text
-        print "\n#{instruction} [default = \"#{default_text}\"]: "
-      else
-        print "\n#{instruction}: "
-      end
-      text = STDIN.gets.chomp.strip
-      text = default_text if text.blank? && default_text
-      text
-    end
+    # def ask_for_text instruction, default_text=nil
+    #   if default_text
+    #     print "\n#{instruction} [default = \"#{default_text}\"]: "
+    #   else
+    #     print "\n#{instruction}: "
+    #   end
+    #   text = STDIN.gets.chomp.strip
+    #   text = default_text if text.blank? && default_text
+    #   text
+    # end
 
     def ask_yes_no question, default_to_yes=true
       print "\n#{question} [#{default_to_yes ? 'Yn' : 'yN'}]: "

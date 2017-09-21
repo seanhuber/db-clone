@@ -37,3 +37,26 @@ production:
   password: production_pw
   host: localhost
   port: 3306
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  port: 5432
+
+pg_development:
+  adapter: postgresql
+  encoding: unicode
+  database: pg_dev_db
+  username: pg_dev_user
+  password: pg_dev_pw
+  host: localhost
+  port: 5432
+
+pg_production:
+  adapter: postgresql
+  encoding: unicode
+  database: pg_prod_db
+  username: pg_prod_user
+  password: pg_prod_pw
+  host: localhost
+  port: 5432

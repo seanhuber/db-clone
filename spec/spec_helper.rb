@@ -1,5 +1,16 @@
-require "bundler/setup"
-require "db/clone"
+# require 'simplecov'
+require 'coveralls'
+Coveralls.wear!
+
+# SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+#   SimpleCov::Formatter::HTMLFormatter,
+#   Coveralls::SimpleCov::Formatter
+# ]
+# SimpleCov.start
+
+require 'bundler/setup'
+require 'db/clone'
+require 'ap'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
