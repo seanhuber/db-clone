@@ -4,6 +4,8 @@
 
 # db-clone
 
+The `db-clone` gem provides a rake task for cloning one database into another.  It does this by making a system call to `mysqldump` or `pg_dump` (currently only mysql and postgresql are supported) and uses the contents of your application's `database.yml` to determine the command line arguments.
+
 ![Screenshot](https://cdn.rawgit.com/seanhuber/db-clone/master/screenshot.png)
 
 ## Requirements
@@ -28,6 +30,26 @@ If you have more database blocks (besides `production` and `development`) define
 
 ```
 rake db:clone[manual]
+```
+
+## Configuration
+
+By default `rake db:clone` will read from `config/database.yml` and use your `production` database as the source and `development` as the destination.  You can configure these defaults to something else by adding to your `Rakefile` (or in an initializer if you're using Rails):
+
+```ruby
+Db::Clone.setup do |config|
+  # default is 'config/database.yml'
+  config.database_yml_path = '/path/to/my_database_config.yml'
+
+  # default is 'production'
+  config.default_source_database = 'my_source_db'
+
+  # default is 'development'
+  config.default_destination_database = 'my_destination_db'
+
+  # default is [], adds --ignore-table arguments to mysqldump
+  config.ignore_tables = ['schema_migrations', 'some_other_table']
+end
 ```
 
 ## Contributing
