@@ -1,30 +1,41 @@
-$:.push File.expand_path('../lib', __FILE__)
+# coding: utf-8
+lib = File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "db/clone/version"
 
-# Maintain your gem's version:
-require 'db_clone/version'
+Gem::Specification.new do |spec|
+  spec.name          = "db-clone"
+  spec.version       = Db::Clone::VERSION
+  spec.authors       = ["Sean Huber"]
+  spec.email         = ["seanhuber@seanhuber.com"]
 
-# Describe your gem and declare its dependencies:
-Gem::Specification.new do |s|
-  s.name        = 'db-clone'
-  s.version     = DbClone::VERSION
-  s.authors     = ['Sean Huber']
-  s.email       = ['seanhuber@seanhuber.com']
-  s.homepage    = 'https://github.com/seanhuber/db-clone'
-  s.summary     = 'rake db:clone will clone your production database to development'
-  s.description = 'rake db:clone[manual] provides a CLI for selecting a specific source database to copy to a specific destination database. Supports postgreql and mysql.'
-  s.license     = 'MIT'
+  spec.homepage    = 'https://github.com/seanhuber/db-clone'
+  spec.summary     = 'rake db:clone will clone your production database to development'
+  spec.description = 'rake db:clone[manual] provides a CLI for selecting a specific source database to copy to a specific destination database. Supports postgreql and mysql.'
 
-  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
-  s.test_files = Dir['spec/**/*']
+  spec.license       = "MIT"
 
-  s.required_ruby_version = '>= 2.1'
+  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
+  # to allow pushing to a single host or delete this section to allow pushing to any host.
+  if spec.respond_to?(:metadata)
+    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+  else
+    raise "RubyGems 2.0 or newer is required to protect against " \
+      "public gem pushes."
+  end
 
-  s.add_dependency 'rails', '>= 4.0', '< 6.0'
-  s.add_dependency 'colorize', '~> 0.7'
+  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
+    f.match(%r{^(test|spec|features)/})
+  end
+  spec.bindir        = 'exe'
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.require_paths = ['lib']
 
-  s.add_development_dependency 'sqlite3', '~> 1.3'
-  s.add_development_dependency 'awesome_print', '~> 1.6'
+  spec.add_dependency 'colorize', '~> 0.7'
 
-  s.add_development_dependency 'rspec-rails', '~> 3.4'
-  s.add_development_dependency 'coveralls', '~> 0.8'
+  spec.add_development_dependency 'bundler', '~> 1.15'
+  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'coveralls', '~> 0.8'
+  spec.add_development_dependency 'awesome_print'
 end
