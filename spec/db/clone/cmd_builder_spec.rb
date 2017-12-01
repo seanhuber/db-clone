@@ -34,6 +34,7 @@ RSpec.describe Db::Clone::CmdBuilder do
 
     cmd_builder = Db::Clone::CmdBuilder.new src: @db_yml['pg_production'], dest: @db_yml['pg_development']
 
-    expect(cmd_builder.cmd).to eq("pg_dump --no-password --clean --host=localhost --port=5432 --username=pg_prod_user pg_prod_db | psql --host=localhost --port=5432 --username=pg_dev_user pg_dev_db")
+    expect(cmd_builder.cmd).to eq("pg_dump --no-password --clean --host=localhost --port=5432 --username=pg_prod_user --exclude-table=table_a --exclude-table=table_b --exclude-table=table_c pg_prod_db | psql --host=localhost --port=5432 --username=pg_dev_user pg_dev_db")
+
   end
 end
