@@ -40,18 +40,23 @@ module Db
       end
 
       def build_postgresql_cmd src_dest
-        [
+        pg_dump_args = [
           "pg_dump --no-password --clean",
           "--host=#{src_dest[:src]['host']}",
           "--port=#{src_dest[:src]['port']}",
           "--username=#{src_dest[:src]['username']}",
+        ]
+
+        Db::Clone.ignore_tables.each{|tbl| pg_dump_args << "--exclude-table=#{tbl}"}
+
+        (pg_dump_args + [
           "#{src_dest[:src]['database']}",
           "| psql",
           "--host=#{src_dest[:dest]['host']}",
           "--port=#{src_dest[:dest]['port']}",
           "--username=#{src_dest[:dest]['username']}",
           "#{src_dest[:dest]['database']}"
-        ].join(' ')
+        ]).join(' ')
       end
     end
   end
