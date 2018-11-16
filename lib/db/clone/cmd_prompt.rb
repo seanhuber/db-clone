@@ -20,7 +20,7 @@ module Db
       end
 
       def prompt question, default, options={}
-        opts = options.except(default)
+        opts = options.reject { |key,| key == default }
         default_option = options[default]
 
         CLI::UI::Prompt.ask(question) do |handler|
