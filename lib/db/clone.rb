@@ -1,4 +1,3 @@
-require 'colorize'
 require 'yaml'
 
 require 'db/clone/cmd_builder.rb'

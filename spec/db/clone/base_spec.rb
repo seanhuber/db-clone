@@ -11,7 +11,8 @@ RSpec.describe Db::Clone::Base do
 
     @db_clone = Db::Clone::Base.new
 
-    expect(@db_clone).to receive(:exec).once.and_return nil
+    expect(@db_clone).to receive(:spawn).once.and_return nil
+    expect(Process).to receive(:wait).once.and_return nil
     allow(@db_clone).to receive(:puts)
     allow(@db_clone).to receive(:print)
   end
@@ -21,12 +22,12 @@ RSpec.describe Db::Clone::Base do
   end
 
   it 'will clone with prompts' do
-    expect(STDIN).to receive(:gets).and_return('8', '7')
+    expect(STDIN).to receive(:getc).and_return('8', '7', 'y')
     @db_clone.clone! true
   end
 
   it 'will abort if writing to default source' do
-    allow(STDIN).to receive(:gets).and_return('2', '4')
+    allow(STDIN).to receive(:getc).and_return('2', '4', 'n')
     expect(@db_clone).to receive(:abort).once
     @db_clone.clone! true
   end
