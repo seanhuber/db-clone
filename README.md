@@ -6,7 +6,9 @@
 
 The `db-clone` gem provides a rake task for cloning one database into another.  It does this by making a system call to `mysqldump` or `pg_dump` (currently only mysql and postgresql are supported) and uses the contents of your application's `database.yml` to determine the command line arguments.
 
-![Screenshot](https://cdn.rawgit.com/seanhuber/db-clone/master/screenshot.png)
+![Screenshot](https://cdn.rawgit.com/seanhuber/db-clone/master/db-clone_thumb.gif)
+
+![Screenshot](https://cdn.rawgit.com/seanhuber/db-clone/master/db-clone-danger_thumb.gif)
 
 ## Requirements
 
