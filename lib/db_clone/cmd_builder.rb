@@ -18,6 +18,17 @@ module DbClone
 
     private
 
+    def eval_fields(db)
+      db.each_with_object({}) do |(k,v), hsh|
+        matched = v.to_s.match(/\A<%=(.+)%>\z/)
+        if matched
+          hsh[k] = matched[1..-1].map{|s| eval(s).to_s.squish}.join('')
+        else
+          hsh[k] = v
+        end
+      end
+    end
+
     def build_mysql_cmd( src_dest )
       mysqldump_args = [
         "mysqldump --no-create-db --add-drop-table --lock-tables=false",
@@ -40,19 +51,28 @@ module DbClone
       ]).join(' ')
     end
 
-    def build_postgresql_cmd( src_dest )
-      [
+    def build_postgresql_cmd src_dest
+      pg_dump_args = [
         "pg_dump --no-password --clean",
         "--host=#{src_dest[:src]['host']}",
         "--port=#{src_dest[:src]['port']}",
         "--username=#{src_dest[:src]['username']}",
+      ]
+
+      Db::Clone.ignore_tables.each{|tbl| pg_dump_args << "--exclude-table=#{tbl}"}
+
+      psql_args = [
         "#{src_dest[:src]['database']}",
         "| psql",
         "--host=#{src_dest[:dest]['host']}",
-        "--port=#{src_dest[:dest]['port']}",
-        "--username=#{src_dest[:dest]['username']}",
-        "#{src_dest[:dest]['database']}"
-      ].join(' ')
+        "--port=#{src_dest[:dest]['port']}"
+      ]
+
+      psql_args << "--username=#{src_dest[:dest]['username']}" if src_dest[:dest]['username'].present?
+
+      psql_args << "#{src_dest[:dest]['database']}"
+
+      (pg_dump_args + psql_args).join(' ')
     end
   end
 end
