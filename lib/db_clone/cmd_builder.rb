@@ -20,7 +20,7 @@ module DbClone
 
     def build_mysql_cmd( src_dest )
       mysqldump_args = [
-        "mysqldump --no-create-db --add-drop-table --lock-tables=false",
+        "mysqldump --no-create-db --add-drop-table --lock-tables=false --no-tablespaces",
         "--user=#{src_dest[:src]['username']}",
         "--password=#{src_dest[:src]['password']}",
         "--host=#{src_dest[:src]['host']}",
